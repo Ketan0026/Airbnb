@@ -16,7 +16,7 @@ const GoogleLogin = () => {
 
       await axios
         .post(
-          `${import.meta.env.VITE_BACKEND_URL}/googleSignin`,
+          `https://airbnb-1tti.onrender.com/googleSignin`,
           {
             name: user.displayName,
             email: user.email,

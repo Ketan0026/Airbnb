@@ -23,7 +23,7 @@ const Register = () => {
 
     const data = { name, email, password };
     await axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/register`, data, {
+      .post(`https://airbnb-1tti.onrender.com/register`, data, {
         withCredentials: true,
       })
       .then((response) => {

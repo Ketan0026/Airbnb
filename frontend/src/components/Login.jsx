@@ -21,7 +21,7 @@ const Login = () => {
 
     const data = { email, password };
     await axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/login`, data, {
+      .post(`https://airbnb-1tti.onrender.com/login`, data, {
         withCredentials: true,
       })
       .then((response) => {

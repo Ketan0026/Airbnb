@@ -19,7 +19,7 @@ const Navbar = () => {
   const handleLogout = () => {
     axios
       .post(
-        `${import.meta.env.VITE_BACKEND_URL}/logout`,
+        `https://airbnb-1tti.onrender.com/logout`,
         {},
         {
           withCredentials: true,

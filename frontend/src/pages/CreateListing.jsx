@@ -183,7 +183,7 @@ const CreateListing = () => {
       });
 
       await axios
-        .post(`${import.meta.env.VITE_BACKEND_URL}/properties/create`, listingForm, {
+        .post(`https://airbnb-1tti.onrender.com/properties/create`, listingForm, {
           withCredentials: true,
         })
         .then((response) => {
