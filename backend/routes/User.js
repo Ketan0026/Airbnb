@@ -32,12 +32,16 @@ router.post("/register", async (req, res) => {
         });
         const token = jwt.sign({ name, id: user._id, email }, jwtSecret);
         userId = user._id.toString();
-        res.cookie("userId", userId);
-        res.cookie("token", token,{
+        res.cookie("userId", userId, {
           httpOnly: true,
-          secure: true, // Use true if on HTTPS
-          sameSite: 'None', // Required for cross-origin
-      });
+          secure: true,
+          sameSite: "None",
+        });
+        res.cookie("token", token, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "None",
+        });
         return res.status(200).send(user);
       });
     });
@@ -64,12 +68,16 @@ router.post("/login", async (req, res) => {
           jwtSecret
         );
         userId = findUser._id.toString();
-        res.cookie("userId", userId);
-        res.cookie("token", token,{
+        res.cookie("userId", userId, {
           httpOnly: true,
-          secure: true, // Use true if on HTTPS
-          sameSite: 'None', // Required for cross-origin
-      });
+          secure: true,
+          sameSite: "None",
+        });
+        res.cookie("token", token, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "None",
+        });
         return res.status(200).send(findUser);
       } else {
         res.status(401).send({ message: "Password is incorrect" });
@@ -96,12 +104,16 @@ router.post("/googleSignin", async (req, res) => {
 
     const token = jwt.sign({ name, id: user._id, email }, jwtSecret);
     userId = user._id.toString();
-    res.cookie("userId", user._id.toString());
-    res.cookie("token", token,{
+    res.cookie("userId", user._id.toString(), {
       httpOnly: true,
-      secure: true, // Use true if on HTTPS
-      sameSite: 'None', // Required for cross-origin
-  });
+      secure: true,
+      sameSite: "None",
+    });
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+    });
     return res.status(200).send(user);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
@@ -127,11 +139,18 @@ router.get("/user/:id", async (req, res) => {
   }
 });
 
-
 /*LOGOUT*/
 router.post("/logout", authMiddleware, async (req, res) => {
-  res.cookie("token", "");
-  res.cookie("userId", "");
+  res.cookie("token", "", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+  });
+  res.cookie("userId", "", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+  });
   res.status(200).json({ message: req.cookies });
 });
 
