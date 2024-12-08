@@ -1,0 +1,212 @@
+.rdrDayDisabled {
+  cursor: default;
+}
+
+.rdrDateRangePickerWrapper {
+  padding: 10px;
+  border-radius: 32px;
+  box-shadow: 0 3px 12px 0 rgb(0 0 0 / 0.15);
+}
+
+.rdrDefinedRangesWrapper,
+.rdrDateDisplayWrapper {
+  display: none;
+}
+
+.rdrCalendarWrapper {
+  border-radius: 32px;
+}
+
+span.rdrWeekDay {
+  font-weight: 600;
+}
+
+.rdrMonthName {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.rdrMonth {
+  padding: 0;
+  width: 310px;
+}
+
+.rdrMonths {
+  gap: 20px;
+}
+
+.rdrDays {
+  justify-content: center;
+  row-gap: 2px;
+}
+
+.rdrMonthAndYearPickers select {
+  font-size: 1rem;
+}
+
+span.rdrStartEdge.rdrEndEdge,
+.rdrDay {
+  height: 44px;
+  width: 44px;
+}
+
+.rdrDayNumber {
+  font-weight: 500;
+}
+
+span.rdrStartEdge.rdrEndEdge {
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.rdrDayDisabled {
+  background-color: transparent;
+}
+
+.rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span {
+  color: #000 !important;
+}
+
+.rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span,
+.rdrDay:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span {
+  color: #fff;
+}
+
+.rdrSelected,
+.rdrInRange,
+.rdrStartEdge,
+.rdrEndEdge {
+  background: #000;
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.rdrInRange {
+  background: #f7f7f7;
+  height: inherit;
+  width: inherit;
+  top: 0;
+  bottom: 0;
+}
+.rdrDayToday .rdrDayNumber span:after {
+  content: none;
+}
+
+.rdrDayHovered {
+  color: inherit;
+  position: relative;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.rdrDateRangePickerWrapper .rdrDay:hover .rdrDayStartPreview,
+.rdrDateRangePickerWrapper .rdrDay:hover .rdrDayInPreview,
+.rdrDateRangePickerWrapper .rdrDay:hover .rdrDayEndPreview {
+  border: 2px solid #000;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  transform: none;
+}
+
+.rdrDayStartPreview,
+.rdrDayInPreview,
+.rdrDayEndPreview {
+  background: rgba(255, 255, 255, 0.09);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  pointer-events: none;
+  border: 0;
+  border-radius: 50%;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.rdrMonthAndYearPickers span select {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.rdrMonth .rdrDay .rdrDayNumber span {
+  display: none;
+}
+
+.rdrMonth .rdrDay {
+  visibility: hidden;
+}
+
+.rdrMonth .rdrDay:not(.rdrDayPassive) {
+  visibility: visible;
+}
+
+.rdrMonth .rdrDay:not(.rdrDayPassive) .rdrDayNumber span {
+  display: inline;
+}
+
+@media screen and (min-width: 540px) {
+  .rdrDateRangePickerWrapper {
+    padding: 22px;
+  }
+
+  .rdrDayNumber {
+    font-size: 0.9rem;
+  }
+
+  .rdrMonth {
+    width: 27.667em;
+  }
+
+  span.rdrStartEdge.rdrEndEdge,
+  .rdrDay {
+    height: 46px;
+    width: 46px;
+  }
+  .rdrCalendarWrapper {
+    border-radius: 0px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .rdrDateRangePickerWrapper {
+    padding-top: 10px;
+    margin-top: 12px;
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .rdrDateRangePickerWrapper {
+    padding: 0px;
+  }
+
+  .rdrPprevButton {
+    margin-right: 0;
+  }
+
+  .rdrNextButton {
+    margin-left: 0;
+  }
+
+  .rdrMonth {
+    padding: 0;
+    width: 300px;
+  }
+
+  span.rdrStartEdge.rdrEndEdge,
+  .rdrDay {
+    height: 42px;
+    width: 42px;
+  }
+}

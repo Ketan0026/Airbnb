@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif";
+  src: url(./AirbnbCerealVF_W_Wght.9c00198218646e3b3f345aa4bc3fda51.woff2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif";
+}
+body {
+  margin: auto;
+  overflow-x: hidden;
+}
+
+.flx {
+  @apply flex items-center justify-center;
+}
+
+.line {
+  @apply w-full border-b border-gray-300;
+}
+
+.inputFocus {
+  @apply bg-white shadow-focus-bs;
+}
+
+.inputHover {
+  @apply bg-transparent hover:bg-custom-gray;
+}
+
+.inputBox {
+  @apply rounded-custom w-full h-inherit py-2 sm:py-3 px-8 transition duration-200;
+}
+
+.checkInOut {
+  @apply min-w-32 text-nowrap flex-0.7-0-0;
+}
+
+.divideLine {
+  @apply border-b w-[90%] md:w-0 md:border-r md:h-8 md:items-center;
+}
+
+.searchHeading {
+  @apply text-[13px] font-medium;
+}
+
+.authBg {
+  @apply fixed w-full h-full left-0 right-0 top-0 bottom-0;
+}
+
+.authFormBox {
+  @apply bg-white my-12 shadow-login-bs p-2 px-4 sm:p-4 sm:px-6 w-full smd:w-[350px] sm:w-[450px];
+}
+
+.authFormHeading {
+  @apply text-[30px] smd:text-[35px] sm:text-[40px] mb-2 font-semibold text-nowrap sm:mb-4;
+}
+
+.inputContainer {
+  @apply flex flex-col text-sm smd:text-[15px] sm:text-base;
+}
+
+.authInput{
+  @apply border p-2 smd:p-2.5 sm:p-3 px-3 smd:px-3.5 sm:px-4 mt-1 smd:mt-1.5 sm:mt-2 rounded-lg tracking-wide outline-none transition duration-300 hover:shadow-login-hover-bs;
+}
+
+.formSubmitBtn{
+  @apply w-full p-3 smd:p-3.5 sm:p-4 mt-2 smd:mt-2.5 sm:mt-3 mb-3 smd:mb-4 sm:mb-5 sm:text-lg tracking-wide bg-[#282626] text-white font-medium rounded-sm transition duration-300 hover:bg-black;
+}
+
+.guestBtn{
+  @apply border border-b-color rounded-full flx outline-none h-7 w-7 transition duration-200;
+}
+
+.links{
+  @apply cursor-pointer text-nowrap py-2 px-3 transition duration-200 hover:bg-[#F1F1F1] hover:font-medium;
+}
