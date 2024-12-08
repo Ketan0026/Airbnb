@@ -13,7 +13,7 @@ const Search = () => {
   const getSearchListings = async () => {
     try {
       const response = await axios.get(
-        `https://airbnb-1tti.onrender.com/properties/search/${search}`
+        `https://airbnb-bdfq.onrender.com/properties/search/${search}`
       );
       setListings(response.data);
       setLoading(false);

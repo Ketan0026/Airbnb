@@ -56,7 +56,7 @@ const EditListing = () => {
     const fetchPropertyData = async () => {
       try {
         const response = await axios.get(
-          `https://airbnb-1tti.onrender.com/properties/${propertyId}`,
+          `https://airbnb-bdfq.onrender.com/properties/${propertyId}`,
           {
             withCredentials: true,
           }
@@ -238,7 +238,7 @@ const EditListing = () => {
 
       await axios
         .put(
-          `https://airbnb-1tti.onrender.com/properties/edit/${propertyId}`,
+          `https://airbnb-bdfq.onrender.com/properties/edit/${propertyId}`,
           listingForm,
           {
             withCredentials: true,
@@ -661,7 +661,7 @@ const EditListing = () => {
                           let photoSrc;
 
                           if (typeof photo === "string") {
-                            photoSrc = `https://airbnb-1tti.onrender.com/uploads/${photo?.replace(
+                            photoSrc = `https://airbnb-bdfq.onrender.com/uploads/${photo?.replace(
                               "public\\uploads\\",
                               ""
                             )}`;
@@ -833,7 +833,7 @@ const EditListing = () => {
                       className="rounded-2xl max-h-96 w-full object-cover aspect-square"
                       src={
                         typeof photos[0] === "string"
-                          ? `https://airbnb-1tti.onrender.com/uploads/${photos[0]?.replace(
+                          ? `https://airbnb-bdfq.onrender.com/uploads/${photos[0]?.replace(
                               "public\\uploads\\",
                               ""
                             )}`

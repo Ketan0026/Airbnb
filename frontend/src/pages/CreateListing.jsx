@@ -183,7 +183,7 @@ const CreateListing = () => {
       });
 
       await axios
-        .post(`https://airbnb-1tti.onrender.com/properties/create`, listingForm, {
+        .post(`https://airbnb-bdfq.onrender.com/properties/create`, listingForm, {
           withCredentials: true,
         })
         .then((response) => {

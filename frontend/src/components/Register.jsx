@@ -23,7 +23,7 @@ const Register = () => {
 
     const data = { name, email, password };
     await axios
-      .post(`https://airbnb-1tti.onrender.com/register`, data, {
+      .post(`https://airbnb-bdfq.onrender.com/register`, data, {
         withCredentials: true,
       })
       .then((response) => {

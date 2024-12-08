@@ -7,7 +7,7 @@ import like from "../assets/like.svg";
 function Slider({ images, initialIndex = 0, closeSlider }) {
   const transformedImages = images.map(
     (image) =>
-      `https://airbnb-1tti.onrender.com/uploads/${image.replace("public\\uploads\\", "")}`
+      `https://airbnb-bdfq.onrender.com/uploads/${image.replace("public\\uploads\\", "")}`
   );
 
   const [currentIndex, setCurrentIndex] = useState(initialIndex);

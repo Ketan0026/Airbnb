@@ -46,7 +46,7 @@ const Details = () => {
     if (!propertyId) return;
 
     axios
-      .get(`https://airbnb-1tti.onrender.com/properties/${propertyId}`)
+      .get(`https://airbnb-bdfq.onrender.com/properties/${propertyId}`)
       .then((response) => {
         setPlace(response.data);
       })
@@ -59,7 +59,7 @@ const Details = () => {
     if (!place || !place.creator?.propertyList?.[0]) return;
 
     axios
-      .get(`https://airbnb-1tti.onrender.com/properties/${place.creator.propertyList[0]}`)
+      .get(`https://airbnb-bdfq.onrender.com/properties/${place.creator.propertyList[0]}`)
       .then((response) => {
         setHost(response.data.createdAt);
         setHostId(response.data._id);
@@ -136,7 +136,7 @@ const Details = () => {
 
     try {
       const response = await axios.post(
-        `https://airbnb-1tti.onrender.com/bookings/check-availability`,
+        `https://airbnb-bdfq.onrender.com/bookings/check-availability`,
         {
           listingId: propertyId,
           startDate: utcCheckIn.toISOString(),
@@ -184,7 +184,7 @@ const Details = () => {
 
     try {
       const response = await axios.post(
-        `https://airbnb-1tti.onrender.com/bookings/create`,
+        `https://airbnb-bdfq.onrender.com/bookings/create`,
         {
           customerId: userInfo._id,
           hostId: hostId,
@@ -213,7 +213,7 @@ const Details = () => {
 
   const cancelBooking = async (booking) => {
     try {
-      await axios.delete(`https://airbnb-1tti.onrender.com/bookings/${booking}`, {
+      await axios.delete(`https://airbnb-bdfq.onrender.com/bookings/${booking}`, {
         withCredentials: true,
       });
       alert("Booking canceled");

@@ -14,7 +14,7 @@ const MyListings = () => {
   const getPropertyList = async () => {
     try {
       const response = await axios.get(
-        `https://airbnb-1tti.onrender.com/users/${userInfo._id}/properties`
+        `https://airbnb-bdfq.onrender.com/users/${userInfo._id}/properties`
       );
       const data = response.data;
       setUserInfo((prevUserInfo) => ({

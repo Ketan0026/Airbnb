@@ -11,7 +11,7 @@ const Trips = () => {
 
   const fetchTrips = async () => {
     try {
-      const response = await axios.get(`https://airbnb-1tti.onrender.com/bookings`, {
+      const response = await axios.get(`https://airbnb-bdfq.onrender.com/bookings`, {
         withCredentials: true,
       });
       setTrips(response.data.bookings || []);

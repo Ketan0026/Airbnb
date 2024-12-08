@@ -82,7 +82,7 @@ const Card = ({
     e.stopPropagation();
     try {
       const response = await axios.delete(
-        `https://airbnb-1tti.onrender.com/properties/${listingId}`
+        `https://airbnb-bdfq.onrender.com/properties/${listingId}`
       );
       if (response.status === 200) {
         onDelete(listingId);
@@ -112,7 +112,7 @@ const Card = ({
             <div key={index} className="w-full h-full flex-shrink-0">
               <img
                 className="w-full h-full object-cover aspect-square"
-                src={`https://airbnb-1tti.onrender.com/uploads/${photo?.replace(
+                src={`https://airbnb-bdfq.onrender.com/uploads/${photo?.replace(
                   "public\\uploads\\",
                   ""
                 )}`}
