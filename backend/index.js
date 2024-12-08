@@ -13,7 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://airbnb-silk-ten.vercel.app/",
+    origin: "https://airbnb-silk-ten.vercel.app",
     credentials: true,
   })
 );
