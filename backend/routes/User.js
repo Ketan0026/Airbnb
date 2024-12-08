@@ -33,7 +33,11 @@ router.post("/register", async (req, res) => {
         const token = jwt.sign({ name, id: user._id, email }, jwtSecret);
         userId = user._id.toString();
         res.cookie("userId", userId);
-        res.cookie("token", token);
+        res.cookie("token", token,{
+          httpOnly: true,
+          secure: true, // Use true if on HTTPS
+          sameSite: 'None', // Required for cross-origin
+      });
         return res.status(200).send(user);
       });
     });
@@ -61,7 +65,11 @@ router.post("/login", async (req, res) => {
         );
         userId = findUser._id.toString();
         res.cookie("userId", userId);
-        res.cookie("token", token);
+        res.cookie("token", token,{
+          httpOnly: true,
+          secure: true, // Use true if on HTTPS
+          sameSite: 'None', // Required for cross-origin
+      });
         return res.status(200).send(findUser);
       } else {
         res.status(401).send({ message: "Password is incorrect" });
@@ -89,7 +97,11 @@ router.post("/googleSignin", async (req, res) => {
     const token = jwt.sign({ name, id: user._id, email }, jwtSecret);
     userId = user._id.toString();
     res.cookie("userId", user._id.toString());
-    res.cookie("token", token);
+    res.cookie("token", token,{
+      httpOnly: true,
+      secure: true, // Use true if on HTTPS
+      sameSite: 'None', // Required for cross-origin
+  });
     return res.status(200).send(user);
   } catch (error) {
     res.status(500).json({ message: "Server error" });

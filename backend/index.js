@@ -11,10 +11,12 @@ const bookingRoute = require("./routes/Booking.js");
 const host = "0.0.0.0";
 const app = express();
 
+
 app.use(
   cors({
-    origin: "https://airbnb-ten-tawny.vercel.app",
-    credentials: true,
+      origin: "https://airbnb-ten-tawny.vercel.app", // Allow only your Vercel frontend
+      methods: ['GET', 'POST', 'PUT', 'DELETE','HEAD','PATCH'], // Allowed methods
+      credentials: true, // Allow cookies if needed
   })
 );
 app.use(express.json());
