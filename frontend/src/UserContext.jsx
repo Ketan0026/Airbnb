@@ -18,7 +18,7 @@ export const UserContextProvider = ({ children }) => {
         const userId = userInfo?._id;
         if (userId) {
           const response = await axios.get(
-            `${import.meta.env.VITE_BACKEND_URL}/user/${userId}`
+            `https://airbnb-bdfq.onrender.com/user/${userId}`
           );
           setWishList(response.data.wishList || []);
         }
@@ -58,7 +58,7 @@ export const UserContextProvider = ({ children }) => {
         return;
       }
 
-      const url = `${import.meta.env.VITE_BACKEND_URL}/users/${userId}/${propertyId}`;
+      const url = `https://airbnb-bdfq.onrender.com/users/${userId}/${propertyId}`;
       const method = "patch";
       const response = await axios({ method, url });
 
