@@ -25,7 +25,7 @@ function App() {
     const fetchId = async () => {
       try {
         await axios
-          .get(`${import.meta.env.VITE_BACKEND_URL}/userId`, {
+          .get(`https://airbnb-bdfq.onrender.com/userId`, {
             withCredentials: true,
           })
           .then((response) => {
@@ -47,7 +47,7 @@ function App() {
       if (userIdData) {
         try {
           const response = await axios.get(
-            `${import.meta.env.VITE_BACKEND_URL}/user/${userIdData}`
+            `https://airbnb-bdfq.onrender.com/user/${userIdData}`
           );
           setUserInfo(response.data);
           setUser(true);

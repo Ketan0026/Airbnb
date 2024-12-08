@@ -36,8 +36,8 @@ export const UserContextProvider = ({ children }) => {
     try {
       const response = await axios.get(
         category !== "All"
-          ? `${import.meta.env.VITE_BACKEND_URL}/properties?category=${category}`
-          : `${import.meta.env.VITE_BACKEND_URL}/properties`
+          ? `https://airbnb-bdfq.onrender.com/properties?category=${category}`
+          : `https://airbnb-bdfq.onrender.com/properties`
       );
       setListings(response.data);
     } catch (err) {
