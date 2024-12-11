@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import heart from "../assets/heart.svg";
 import like from "../assets/like.svg";
@@ -7,6 +7,7 @@ import menu from "../assets/menu.svg";
 import pencil from "../assets/pencil.svg";
 import axios from "axios";
 import { useWishlist } from "../hooks/useWishlist";
+import { UserContext } from "../UserContext";
 
 const formatPrice = (price) => {
   return new Intl.NumberFormat("en-IN").format(price);
@@ -40,6 +41,7 @@ const Card = ({
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const navigate = useNavigate();
+  const { windowWidth } = useContext(UserContext);
   const { isInWishlist, handleWishlistToggle } = useWishlist(listingId);
 
   useEffect(() => {
@@ -125,7 +127,11 @@ const Card = ({
         {currentIndex > 0 && (
           <button
             onClick={handlePrev}
-            className="top-1/2 left-3 border transform -translate-y-1/2 opacity-0 group-hover:opacity-100 absolute bg-white h-8 w-8 flex justify-center items-center z-10 border-[#0000004d] rounded-full transition duration-200 hover:scale-105 hover:shadow-navigate-bs"
+            className={`top-1/2 left-3 transform -translate-y-1/2 absolute bg-white h-8 w-8 flex justify-center items-center z-10 border border-[#0000004d] rounded-full transition duration-200 hover:scale-105 hover:shadow-navigate-bs ${
+              windowWidth <= 768
+                ? "opacity-100"
+                : "opacity-0 group-hover:opacity-100"
+            }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +149,11 @@ const Card = ({
         {currentIndex < listingPhotoPaths.length - 1 && (
           <button
             onClick={handleNext}
-            className="top-1/2 right-3 border transform -translate-y-1/2 opacity-0 group-hover:opacity-100 absolute bg-white h-8 w-8 flex justify-center items-center z-10 border-[#0000004d] rounded-full transition duration-200 hover:scale-105 hover:shadow-navigate-bs"
+            className={`top-1/2 right-3 transform -translate-y-1/2 absolute bg-white h-8 w-8 flex justify-center items-center z-10 border border-[#0000004d] rounded-full transition duration-200 hover:scale-105 hover:shadow-navigate-bs ${
+              windowWidth <= 768
+                ? "opacity-100"
+                : "opacity-0 group-hover:opacity-100"
+            }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -255,7 +265,8 @@ const Card = ({
             {formatDate(startDate)} - {formatDate(endDate)}
           </p>
           <p>
-            <span className="font-medium">₹{formatPrice(totalPrice)}</span> total
+            <span className="font-medium">₹{formatPrice(totalPrice)}</span>{" "}
+            total
           </p>
         </>
       )}
