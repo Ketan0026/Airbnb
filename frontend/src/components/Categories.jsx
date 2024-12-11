@@ -15,6 +15,11 @@ const Categories = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   useEffect(() => {
+    setSlctdCategory("All");
+    setGlobalSelectedCategory("All");
+  }, []);
+
+  useEffect(() => {
     const updateWidths = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.clientWidth;
