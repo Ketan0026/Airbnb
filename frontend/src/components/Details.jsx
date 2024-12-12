@@ -213,25 +213,17 @@ const Details = () => {
 
   const cancelBooking = async (booking) => {
     try {
-      setBooking(false);
-      const response = await axios.delete(`https://airbnb-bdfq.onrender.com/bookings/${booking}`, {
+      await axios.delete(`https://airbnb-bdfq.onrender.com/bookings/${booking}`, {
         withCredentials: true,
       });
-  
-      if (response.status === 200) {
-        setBooking(false);
-        alert("Booking canceled successfully.");
-      } else {
-        alert("Failed to cancel the booking.");
-      }
+      alert("Booking canceled");
+      setBooking(false);
+      navigate(`/${userInfo._id}/trips`)
     } catch (error) {
-      alert(`Error canceling the booking: ${error.response?.data?.message || error.message}`);
-      console.error("Cancel booking error:", error);
-      
-      setBooking(true);
+      console.log(error);
     }
   };
-  
+
   const calculateNights = (checkInDate, checkOutDate) => {
     if (checkInDate && checkOutDate) {
       const diffTime = Math.abs(new Date(checkOutDate) - new Date(checkInDate));
