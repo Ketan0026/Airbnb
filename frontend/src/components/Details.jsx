@@ -219,6 +219,7 @@ const Details = () => {
       });
   
       if (response.status === 200) {
+        setBooking(false);
         alert("Booking canceled successfully.");
       } else {
         alert("Failed to cancel the booking.");
