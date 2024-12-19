@@ -14,9 +14,9 @@ const app = express();
 
 app.use(
   cors({
-      origin: "https://airbnb-ten-tawny.vercel.app", // Allow only your Vercel frontend
-      methods: ['GET', 'POST', 'PUT', 'DELETE','HEAD','PATCH'], // Allowed methods
-      credentials: true, // Allow cookies if needed
+      origin: "https://airbnb-ten-tawny.vercel.app",
+      methods: ['GET', 'POST', 'PUT', 'DELETE','HEAD','PATCH'],
+      credentials: true,
   })
 );
 app.use(express.json());
