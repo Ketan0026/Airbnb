@@ -1,20 +1,8 @@
 const router = require("express").Router();
-const multer = require("multer");
-
+const upload = require("../middleware/multer");
 const ListingModel = require("../models/Listing");
 const UserModel = require("../models/User");
 const authMiddleware = require("../middleware/authMiddleware");
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-});
-
-const upload = multer({ storage });
 
 /* CREATE LISTING */
 router.post(
