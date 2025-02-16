@@ -11,6 +11,14 @@ router.post(
   upload.array("listingPhotos"),
   async (req, res) => {
     try {
+      console.log("Incoming request to /properties/create"); // Log the request
+
+      console.log("Request Body:", req.body);
+      console.log("Uploaded Files:", req.files); // Log uploaded files
+
+      if (!req.files || req.files.length === 0) {
+        return res.status(400).json({ message: "No files uploaded" });
+      }
       const {
         category,
         houseType,
@@ -38,6 +46,7 @@ router.post(
         return res.status(400).send("No file uploaded.");
       }
       const listingPhotoPaths = listingPhotos.map((file) => file.path);
+      console.log("Processed listingPhotos:", listingPhotoPaths);
 
       const parsedCountry = JSON.parse(country);
       const parsedAmenities = Array.isArray(amenities)
