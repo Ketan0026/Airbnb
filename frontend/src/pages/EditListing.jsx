@@ -662,10 +662,8 @@ const EditListing = () => {
 
                           if (typeof photo === "string") {
                             if (photo.startsWith("http")) {
-                              // If it's already a valid URL (Cloudinary or external), use it directly
                               photoSrc = photo;
                             } else {
-                              // Fallback for legacy images stored in local backend
                               photoSrc = `https://airbnb-bdfq.onrender.com/uploads/${photo.replace(
                                 "public\\uploads\\",
                                 ""
