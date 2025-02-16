@@ -61,20 +61,9 @@ const CreateListing = () => {
     fileInputRef.current.click();
   };
 
-  const handleUploadPhotos = async (e) => {
-    const files = Array.from(e.target.files);
-    const formData = new FormData();
-    files.forEach((file) => formData.append("files", file));
-  
-    try {
-      const res = await axios.post("https://airbnb-bdfq.onrender.com/upload", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-  
-      setPhotos((prevPhotos) => [...prevPhotos, ...res.data.imageUrls]); // Store Cloudinary URLs
-    } catch (error) {
-      console.error("Upload failed:", error);
-    }
+  const handleUploadPhotos = (e) => {
+    const newPhotos = e.target.files;
+    setPhotos((prevPhotos) => [...prevPhotos, ...newPhotos]);
   };
 
   const handleDragPhoto = (result) => {
@@ -189,7 +178,9 @@ const CreateListing = () => {
       listingForm.append("description", description);
       listingForm.append("price", price);
 
-      listingForm.append("listingPhotos", JSON.stringify(photos));
+      photos.forEach((photo) => {
+        listingForm.append("listingPhotos", photo);
+      });
 
       await axios
         .post(`https://airbnb-bdfq.onrender.com/properties/create`, listingForm, {
@@ -625,7 +616,7 @@ const CreateListing = () => {
                                 >
                                   <img
                                     className={`w-full h-full rounded-lg object-cover`}
-                                    src={photo}
+                                    src={URL.createObjectURL(photo)}
                                     alt="place"
                                   />
                                   <button
