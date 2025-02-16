@@ -5,13 +5,8 @@ import { useParams } from "react-router-dom";
 import like from "../assets/like.svg";
 
 function Slider({ images, initialIndex = 0, closeSlider }) {
-  const transformedImages = images.map(
-    (image) =>
-      `https://airbnb-bdfq.onrender.com/uploads/${image.replace("public\\uploads\\", "")}`
-  );
 
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
-
   const { propertyId } = useParams();
   const { isInWishlist, handleWishlistToggle } = useWishlist(propertyId);
 
@@ -19,22 +14,22 @@ function Slider({ images, initialIndex = 0, closeSlider }) {
   const [isSwiping, setIsSwiping] = useState(false);
 
   useEffect(() => {
-    if (initialIndex < 0 || initialIndex >= transformedImages.length) {
+    if (initialIndex < 0 || initialIndex >= images.length) {
       setCurrentIndex(0);
     } else {
       setCurrentIndex(initialIndex);
     }
-  }, [initialIndex, transformedImages.length]);
+  }, [initialIndex, images.length]);
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === transformedImages.length - 1 ? 0 : prevIndex + 1
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? transformedImages.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
@@ -91,7 +86,7 @@ function Slider({ images, initialIndex = 0, closeSlider }) {
             <span className="hidden md:block">Close</span>
           </button>
           <div className=" text-white font-semibold">
-            {currentIndex + 1} / {transformedImages.length}
+            {currentIndex + 1} / {images.length}
           </div>
           <button
             onClick={(e) => {
@@ -126,7 +121,7 @@ function Slider({ images, initialIndex = 0, closeSlider }) {
         <div className="w-full h-full flex justify-center items-center">
           <div className="max-h-[500px] md:max-w-[750px] h-full">
             <img
-              src={transformedImages[currentIndex]}
+              src={images[currentIndex]}
               alt={`Slide ${currentIndex + 1}`}
               className="w-auto h-full max-w-full object-contain"
             />
@@ -140,7 +135,7 @@ function Slider({ images, initialIndex = 0, closeSlider }) {
             <img className="w-5 h-5" src={arrow} alt="" />
           </button>
         )}
-        {currentIndex < transformedImages.length - 1 && (
+        {currentIndex < images.length - 1 && (
           <button
             className="absolute top-1/2 right-10 w-14 h-14 hidden justify-center items-center transform -translate-y-1/2 border-2 border-white text-white p-2 rounded-full transition duration-150 hover:bg-[#4A4A4A] lg:flex"
             onClick={goToNext}
