@@ -658,6 +658,22 @@ const EditListing = () => {
                     {photos.length >= 1 && (
                       <div className="md:max-w-[700px] w-full flex justify-center gap-4 flex-wrap mx-auto">
                         {photos.map((photo, index) => {
+                          let photoSrc;
+
+                          if (typeof photo === "string") {
+                            if (photo.startsWith("http")) {
+                              // If it's already a valid URL (Cloudinary or external), use it directly
+                              photoSrc = photo;
+                            } else {
+                              // Fallback for legacy images stored in local backend
+                              photoSrc = `https://airbnb-bdfq.onrender.com/uploads/${photo.replace(
+                                "public\\uploads\\",
+                                ""
+                              )}`;
+                            }
+                          } else {
+                            photoSrc = URL.createObjectURL(photo);
+                          }
                           return (
                             <Draggable
                               key={index}
@@ -677,7 +693,7 @@ const EditListing = () => {
                                 >
                                   <img
                                     className={`w-full h-full rounded-lg object-cover`}
-                                    src={photo}
+                                    src={photoSrc}
                                     alt="place"
                                   />
                                   <button
