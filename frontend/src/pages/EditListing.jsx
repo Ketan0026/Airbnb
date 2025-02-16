@@ -658,16 +658,6 @@ const EditListing = () => {
                     {photos.length >= 1 && (
                       <div className="md:max-w-[700px] w-full flex justify-center gap-4 flex-wrap mx-auto">
                         {photos.map((photo, index) => {
-                          let photoSrc;
-
-                          if (typeof photo === "string") {
-                            photoSrc = `https://airbnb-bdfq.onrender.com/uploads/${photo?.replace(
-                              "public\\uploads\\",
-                              ""
-                            )}`;
-                          } else {
-                            photoSrc = URL.createObjectURL(photo);
-                          }
                           return (
                             <Draggable
                               key={index}
@@ -687,7 +677,7 @@ const EditListing = () => {
                                 >
                                   <img
                                     className={`w-full h-full rounded-lg object-cover`}
-                                    src={photoSrc}
+                                    src={photo}
                                     alt="place"
                                   />
                                   <button
