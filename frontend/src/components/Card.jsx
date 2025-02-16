@@ -114,10 +114,7 @@ const Card = ({
             <div key={index} className="w-full h-full flex-shrink-0">
               <img
                 className="w-full h-full object-cover aspect-square"
-                src={`https://airbnb-bdfq.onrender.com/uploads/${photo?.replace(
-                  "public\\uploads\\",
-                  ""
-                )}`}
+                src={photo}
                 alt={`photo ${index + 1}`}
               />
             </div>
