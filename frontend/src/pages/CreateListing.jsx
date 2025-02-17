@@ -16,6 +16,7 @@ import { UserContext } from "../UserContext";
 const CreateListing = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [progressPercentage, setProgressPercentage] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [house, setHouse] = useState("");
   const [houseTypeIndex, setHouseTypeIndex] = useState(null);
@@ -156,6 +157,7 @@ const CreateListing = () => {
   };
   const handlePublish = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       const listingForm = new FormData();
@@ -183,9 +185,13 @@ const CreateListing = () => {
       });
 
       await axios
-        .post(`https://airbnb-bdfq.onrender.com/properties/create`, listingForm, {
-          withCredentials: true,
-        })
+        .post(
+          `https://airbnb-bdfq.onrender.com/properties/create`,
+          listingForm,
+          {
+            withCredentials: true,
+          }
+        )
         .then((response) => {
           const newProperty = response.data;
           setUserInfo((prevUserInfo) => ({
@@ -199,6 +205,8 @@ const CreateListing = () => {
         });
     } catch (err) {
       console.log("Publish Listing failed", err.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -811,9 +819,14 @@ const CreateListing = () => {
         {currentStep === 11 && (
           <button
             onClick={handlePublish}
-            className="py-3 px-5 sm:py-3.5 sm:px-7 font-semibold bg-[#131313] text-white rounded-lg hover:bg-black"
+            disabled={isSubmitting}
+            className={`py-3 px-5 sm:py-3.5 sm:px-7 font-semibold rounded-lg ${
+              isSubmitting
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-[#131313] hover:bg-black text-white"
+            }`}
           >
-            Publish
+            {isSubmitting ? "Publishing..." : "Publish"}
           </button>
         )}
       </div>

@@ -261,8 +261,8 @@ const EditListing = () => {
         });
     } catch (err) {
       console.log("Edit Listing failed", err.message);
-    }finally {
-      setIsSubmitting(false); // Re-enable button after request is complete
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
