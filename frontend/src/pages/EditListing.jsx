@@ -17,6 +17,7 @@ const EditListing = () => {
   const { propertyId } = useParams();
   const [currentStep, setCurrentStep] = useState(1);
   const [progressPercentage, setProgressPercentage] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [house, setHouse] = useState("");
   const [houseTypeIndex, setHouseTypeIndex] = useState(null);
@@ -199,6 +200,7 @@ const EditListing = () => {
 
   const handlePublish = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       const listingForm = new FormData();
@@ -259,6 +261,8 @@ const EditListing = () => {
         });
     } catch (err) {
       console.log("Edit Listing failed", err.message);
+    }finally {
+      setIsSubmitting(false); // Re-enable button after request is complete
     }
   };
 
@@ -890,9 +894,14 @@ const EditListing = () => {
         {currentStep === 11 && (
           <button
             onClick={handlePublish}
-            className="py-3 px-5 sm:py-3.5 sm:px-7 font-semibold bg-[#131313] text-white rounded-lg hover:bg-black"
+            disabled={isSubmitting}
+            className={`py-3 px-5 sm:py-3.5 sm:px-7 font-semibold  rounded-lg ${
+              isSubmitting
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-[#131313] hover:bg-black text-white"
+            }`}
           >
-            Submit
+            {isSubmitting ? "Submitting..." : "Submit"}
           </button>
         )}
       </div>
