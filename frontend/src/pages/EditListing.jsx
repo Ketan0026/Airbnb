@@ -837,10 +837,7 @@ const EditListing = () => {
                       className="rounded-2xl max-h-96 w-full object-cover aspect-square"
                       src={
                         typeof photos[0] === "string"
-                          ? `https://airbnb-bdfq.onrender.com/uploads/${photos[0]?.replace(
-                              "public\\uploads\\",
-                              ""
-                            )}`
+                          ? photos[0]
                           : URL.createObjectURL(photos[0])
                       }
                       alt=""
