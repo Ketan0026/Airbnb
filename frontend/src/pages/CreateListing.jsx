@@ -778,7 +778,7 @@ const CreateListing = () => {
                 </h2>
                 <h3 className="text-gray-500 sm:text-lg">{title}</h3>
                 <div className="mt-1 sm:text-lg">
-                  <span className="font-bold">₹{formatPrice(price)}</span> per
+                  <span className="font-bold">₹{formattedPrice}</span> per
                   night
                 </div>
               </div>
